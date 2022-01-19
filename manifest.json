@@ -1,0 +1,35 @@
+{
+  "manifest_version": 2,
+  "name": "Selector de cursos",
+  "version": "0.1",
+  "description": "Permite señalar o indicar cursos de CF con una duracion menor o igual a la configurada por el usuario.",
+  "author": "vifrac",
+  "version_name": "0.1 Alpha",
+
+  "icons": {
+    "32": "images/icons/icon32.png",
+    "48": "images/icons/icon48.png",
+    "128": "images/icons/icon128.png"
+  },
+
+  "browser_action": {
+    "default_popup": "popup.html"
+  },
+
+  "permissions": ["tabs", "storage"],
+
+  "background": {
+    "scripts": ["js/background.js"],
+    "persistent": false
+  },
+
+  "content_scripts": [
+    {
+      "matches": ["https://codigofacilito.com/courses"],
+      "js": ["js/content.js"],
+      "run_at": "document_idle"
+    }
+  ],
+
+  "options_page": "options.html"
+}
